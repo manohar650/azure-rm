@@ -45,7 +45,7 @@
         "vnetSubnetPrefix": "10.0.0.0/24"
       },
       "virtualMachines": {
-        "count": 3,
+        "count": 21,
         "imagePublisher": "MicrosoftWindowsServer",
         "imageOffer": "WindowsServer",
         "dcVmSize": "Standard_D1",
