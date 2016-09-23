@@ -14,10 +14,12 @@
     }
   },
   "variables": {
-      "concat": "[concat(parameters('array'),parameters('array'))]",
-      "length": "[length(parameters('array'))]"
+    "concat": "[concat(parameters('array'),parameters('array'))]",
+    "length": "[length(parameters('array'))]",
+    "skip": "[skip(parameters('array'),2)]",
+    "take": "[take(parameters('array'),2)]"
   },
-  "resources": [ ],
+  "resources": [],
   "outputs": {
     "concat": {
       "type": "array",
@@ -26,6 +28,14 @@
     "length": {
       "type": "int",
       "value": "[variables('length')]"
+    },
+    "skip": {
+      "type": "array",
+      "value": "[variables('skip')]"
+    },
+    "take": {
+      "type": "array",
+      "value": "[variables('take')]"
     }
   }
 }

@@ -14,7 +14,8 @@
     }
   },
   "variables": {
-    "listKeys": "[parameters('skipValidation')]",
+    "listKeys": "The listKeys function derives its value from a runtime state, and therefore cannot be used in the variables section. It can be used in outputs section of a template.",
+    "listValue": "The listValue function derives its value from a runtime state, and therefore cannot be used in the variables section. It can be used in outputs section of a template.",
     "providers": {
       "nameSpace": "[providers('Microsoft.Network')]",
       "type": "[providers('Microsoft.Network', 'virtualNetworks')]"
@@ -28,7 +29,7 @@
     {
       "name": "[parameters('storageAccountName')]",
       "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[resourceGroup().location]",
       "properties": {
         "accountType": "Standard_LRS"
@@ -38,7 +39,7 @@
   "outputs": {
     "listKeys": {
       "type": "object",
-      "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-05-01-preview')]"
+      "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2015-06-15')]"
     },
     "providersNameSpace": {
       "type": "object",

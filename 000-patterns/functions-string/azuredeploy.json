@@ -8,11 +8,11 @@
       "allowedValues": [ "skipValidation" ],
       "metadata": { "description": "This parameter is used for all functions that will skip validation." }
     },
-    "String": {
+    "string": {
       "type": "string",
       "defaultValue": "String 3-Values  "
     },
-    "Int": {
+    "int": {
       "type": "int",
       "defaultValue": 10
     }
@@ -20,11 +20,14 @@
   "variables": {
     "base64": "[base64(parameters('string'))]",
     "concat": "[concat(parameters('string'),'/fixedtext/',parameters('int'))]",
+    "length": "[length(parameters('string'))]",
     "padLeft": "[padleft(parameters('string'),3,'0')]",
     "replace": "[replace(parameters('string'),'-','')]",
+    "skip": "[skip(parameters('string'),2)]",
     "split": "[split(parameters('string'),' ')]",
-    "string": "[parameters('Int')]",
+    "string": "[string(parameters('int'))]",
     "subString": "[substring(parameters('string'), 3, 4)]",
+    "take": "[take(parameters('string'),3)]",
     "toLower": "[toLower(parameters('string'))]",
     "toUpper": "[toUpper(parameters('string'))]",
     "trim": "[trim(parameters('string'))]",
@@ -41,6 +44,10 @@
       "type": "string",
       "value": "[variables('concat')]"
     },
+    "length": {
+      "type": "int",
+      "value": "[variables('length')]"
+    },
     "padLeft": {
       "type": "string",
       "value": "[variables('padLeft')]"
@@ -48,6 +55,10 @@
     "replace": {
       "type": "string",
       "value": "[variables('replace')]"
+    },
+    "skip": {
+      "type": "string",
+      "value": "[variables('skip')]"
     },
     "split": {
       "type": "string",
@@ -60,6 +71,10 @@
     "subString": {
       "type": "string",
       "value": "[variables('subString')]"
+    },
+    "take": {
+      "type": "string",
+      "value": "[variables('take')]"
     },
     "toLower": {
       "type": "string",
