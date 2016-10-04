@@ -1,5 +1,5 @@
 Param(
-  [string]$myparam = ''
+  [string]$myparam = 'RPATH'
 )
 
 $myparam
