@@ -1,6 +1,6 @@
 {
   "handler": "Microsoft.Compute.MultiVm",
-  "version": "0.1.0-preview",
+  "version": "0.0.1-preview",
   "parameters": {
     "basics": [
       {
@@ -29,7 +29,9 @@
         "label": "myParamStringInfra",
         "defaultValue": "myInfra",
         "toolTip": "My infra description",
-        "constraints": {},
+        "constraints": {
+
+        },
         "visible": true
       },
       {
@@ -38,7 +40,9 @@
         "label": "myParamStringApp",
         "defaultValue": "myApp",
         "toolTip": "My app description",
-        "constraints": {},
+        "constraints": {
+
+        },
         "visible": true
       },
       {
@@ -47,11 +51,15 @@
         "label": "myParamStringDB",
         "defaultValue": "myAppDB",
         "toolTip": "DB for the app",
-        "constraints": {},
+        "constraints": {
+
+        },
         "visible": true
       }
     ],
-    "steps": [],
+    "steps": [
+
+    ],
     "outputs": {
       "myParamStringInfra": "[basics('myParamStringInfra')]",
       "myParamStringApp": "[basics('myParamStringApp')]",
