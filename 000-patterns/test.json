@@ -1,18 +1,55 @@
-Param(
-  [string]$RelPath = 'FILTER'
-)
-
-# Set Variabales
-$LocalPath = 'c:\AzureStack_TP2_SupportFiles'
-$Api = 'https://api.github.com/repos/Azure/AzureStack-Tools'
-$Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/'
-
-# Get the Tree Recursively from the GitHub API
-$Master = ConvertFrom-Json (invoke-webrequest ($Api + '/git/trees/master'))
-$Content = (ConvertFrom-Json (invoke-webrequest ($Api + '/git/trees/' + $Master.sha + '?recursive=1'))).tree
-if ($RelPath){$Content = $Content | where {$_.path -match $RelPath}}
-
-# Create Folders and download files
-New-Item $LocalPath -type directory -Force
-($Content | where { ($_.type -eq 'tree') -and ($_.path -match $RelPath) }).path | ForEach { New-Item ($LocalPath + '\' + $_) -type directory -Force }
-($Content | where { ($_.type -eq 'blob') -and ($_.path -match $RelPath) }).path | ForEach { Invoke-WebRequest ($Uri + $_) -OutFile ($LocalPath + '\' + $_) }
+{
+  "handler": "Microsoft.Compute.MultiVm",
+  "version": "0.1.0-preview",
+  "parameters": {
+    "basics": [
+      {
+        "name": "myParamStringBasic",
+        "type": "Microsoft.Common.DropDown",
+        "label": "myParamStringBasic",
+        "defaultValue": "Standard_LRS",
+        "toolTip": "this is the metadata description",
+        "constraints": {},
+        "options": "",
+        "visible": true
+      },
+      {
+        "name": "myParamStringInfra",
+        "type": "Microsoft.Common.TextBox",
+        "label": "myParamStringInfra",
+        "defaultValue": "myInfra",
+        "toolTip": "My infra description",
+        "constraints": "",
+        "options": "",
+        "visible": true
+      },
+      {
+        "name": "myParamStringApp",
+        "type": "Microsoft.Common.TextBox",
+        "label": "myParamStringApp",
+        "defaultValue": "myApp",
+        "toolTip": "My app description",
+        "constraints": "",
+        "options": "",
+        "visible": true
+      },
+      {
+        "name": "myParamStringDB",
+        "type": "Microsoft.Common.TextBox",
+        "label": "myParamStringDB",
+        "defaultValue": "myAppDB",
+        "toolTip": "DB for the app",
+        "constraints": "",
+        "options": "",
+        "visible": true
+      }
+    ],
+    "steps": "",
+    "outputs": {
+      "myParamStringInfra": "[basics('myParamStringInfra')]",
+      "myParamStringApp": "[basics('myParamStringApp')]",
+      "myParamStringDB": "[basics('myParamStringDB')]",
+      "myParamStringBasic": "[basics('myParamStringBasic')]"
+    }
+  }
+}
