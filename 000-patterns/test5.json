@@ -1,0 +1,25 @@
+{
+  "handler": "Microsoft.Compute.MultiVm",
+  "version": "0.0.1-preview",
+  "parameters": {
+    "basics": [
+      {
+        "name": "masterEndpointDNSNamePrefix",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Master DNS Name Prefix",
+        "defaultValue": "dcosmaster",
+        "toolTip": "Set the domain name label for the master IP address. The concatenation of the domain name label and the regional DNS zone make up the fully qualified domain name associated with the public IP address.",
+        "constraints": {
+          "required": true,
+          "regex": "^[a-z][a-z0-9-]{1,10}$",
+          "validationMessage": "Must start with a letter, only alphanumeric characters are allowed, and must be max. 10 characters long."
+        }
+      }
+    ],
+    "steps": [
+    ],
+    "outputs": {
+      "masterEndpointDNSNamePrefix": "[basics('masterEndpointDNSNamePrefix')]"
+    }
+  }
+}
