@@ -1,25 +1,55 @@
 {
   "handler": "Microsoft.Compute.MultiVm",
-  "version": "0.0.1-preview",
+  "version": "0.1.0-preview",
   "parameters": {
     "basics": [
       {
-        "name": "masterEndpointDNSNamePrefix",
+        "name": "myParamStringBasic",
+        "type": "Microsoft.Common.DropDown",
+        "label": "myParamStringBasic",
+        "defaultValue": "Standard_LRS",
+        "toolTip": "this is the metadata description",
+        "constraints": {},
+        "options": "",
+        "visible": true
+      },
+      {
+        "name": "myParamStringInfra",
         "type": "Microsoft.Common.TextBox",
-        "label": "Master DNS Name Prefix",
-        "defaultValue": "dcosmaster",
-        "toolTip": "Set the domain name label for the master IP address. The concatenation of the domain name label and the regional DNS zone make up the fully qualified domain name associated with the public IP address.",
-        "constraints": {
-          "required": true,
-          "regex": "^[a-z][a-z0-9-]{1,10}$",
-          "validationMessage": "Must start with a letter, only alphanumeric characters are allowed, and must be max. 10 characters long."
-        }
+        "label": "myParamStringInfra",
+        "defaultValue": "myInfra",
+        "toolTip": "My infra description",
+        "constraints": "",
+        "options": "",
+        "visible": true
+      },
+      {
+        "name": "myParamStringApp",
+        "type": "Microsoft.Common.TextBox",
+        "label": "myParamStringApp",
+        "defaultValue": "myApp",
+        "toolTip": "My app description",
+        "constraints": "",
+        "options": "",
+        "visible": true
+      },
+      {
+        "name": "myParamStringDB",
+        "type": "Microsoft.Common.TextBox",
+        "label": "myParamStringDB",
+        "defaultValue": "myAppDB",
+        "toolTip": "DB for the app",
+        "constraints": "",
+        "options": "",
+        "visible": true
       }
     ],
-    "steps": [
-    ],
+    "steps": [],
     "outputs": {
-      "masterEndpointDNSNamePrefix": "[basics('masterEndpointDNSNamePrefix')]"
+      "myParamStringInfra": "[basics('myParamStringInfra')]",
+      "myParamStringApp": "[basics('myParamStringApp')]",
+      "myParamStringDB": "[basics('myParamStringDB')]",
+      "myParamStringBasic": "[basics('myParamStringBasic')]"
     }
   }
 }
