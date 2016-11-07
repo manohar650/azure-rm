@@ -42,7 +42,7 @@
         "name": "step",
         "label": "step",
         "sublabel": {
-          "preValidation": "Configure the step settings",
+          "preValidation": "Optional",
           "postValidation": "Done"
         },
         "bladeTitle": "step",
