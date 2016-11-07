@@ -41,7 +41,7 @@
       {
         "name": "step",
         "label": "step",
-        "sublabel": {
+        "subLabel": {
           "preValidation": "Configure the step settings",
           "postValidation": "Done"
         },
