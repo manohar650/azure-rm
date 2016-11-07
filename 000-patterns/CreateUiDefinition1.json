@@ -41,10 +41,6 @@
       {
         "name": "step",
         "label": "step",
-        "sublabel": {
-          "preValidation": "Optional",
-          "postValidation": "Done"
-        },
         "bladeTitle": "step",
         "elements": [
           {
