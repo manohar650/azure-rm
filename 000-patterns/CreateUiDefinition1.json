@@ -60,7 +60,7 @@
     "outputs": {
       "myParamStringInfra": "[basics('myParamStringInfra')]",
       "myParamStringApp": "[basics('myParamStringApp')]",
-      "myParamStringDB": "[step('myParamStringDB')]",
+      "myParamStringDB": "[steps('step').myParamStringDB]",
       "myParamStringBasic": "[basics('myParamStringBasic')]"
     }
   }
