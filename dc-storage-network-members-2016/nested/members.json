@@ -94,7 +94,7 @@
           "imageReference": {
             "publisher": "[parameters('common').virtualMachines.imagePublisher]",
             "offer": "[parameters('common').virtualMachines.imageOffer]",
-            "sku": "Windows-Server-Technical-Preview",
+            "sku": "2016-Datacenter",
             "version": "latest"
           },
           "osDisk": {
