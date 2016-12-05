@@ -1,4 +1,4 @@
-test{
+{
   "handler": "Microsoft.Compute.VmExtension",
   "version": "1.0.0",
   "parameters": {
