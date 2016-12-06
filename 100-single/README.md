@@ -1,6 +1,6 @@
 the following PowerShell script:
 
-    ```PowerShell
+```PowerShell
     # Variables
     $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/'
     $LocalPath = 'c:\AzureRMTemplateValidator'
@@ -13,6 +13,6 @@ the following PowerShell script:
 
     # Download Template Validator files
     Invoke-WebRequest 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/CloudCapabilities/AzureRM.CloudCapabilities.psm1' -OutFile ($LocalPath + '\' + 'AzureRM.CloudCapabilities.psm1') 
-    ```
+```
 
 ## Validate templates
