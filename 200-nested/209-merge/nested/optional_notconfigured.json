@@ -1,0 +1,30 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "apiVersion": {
+      "type": "object"
+    }
+  },
+  "variables": {
+    "apiVersion": {
+      "storage": { "storageAccounts": "[parameters('apiVersion').storage.storageAccounts]" }
+    }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "apiVersionParameterObject": {
+      "value": "[parameters('apiVersion')]",
+      "type": "object"
+    },
+    "apiVersionVariableObject": {
+      "value": "[variables('apiVersion')]",
+      "type": "object"
+    },
+    "apiVersionVariableString": {
+      "value": "[variables('apiVersion').storage.storageAccounts]",
+      "type": "string"
+    }
+  }
+}
