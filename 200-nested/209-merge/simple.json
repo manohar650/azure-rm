@@ -41,7 +41,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "https://raw.githubusercontent.com/marcvaneijk/arm/master/200-nested/209-merge/shared.json",
+          "uri": "https://raw.githubusercontent.com/marcvaneijk/arm/master/200-nested/209-merge/nested/shared.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -61,7 +61,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "https://raw.githubusercontent.com/marcvaneijk/arm/master/200-nested/209-merge/optional_configured.json",
+          "uri": "https://raw.githubusercontent.com/marcvaneijk/arm/master/200-nested/209-merge/nested/optional_configured.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
