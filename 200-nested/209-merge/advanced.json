@@ -1,0 +1,80 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "singleParam": {
+      "type": "string",
+      "defaultValue": "singleParam"
+    },
+    "optionalResource": {
+      "type": "string",
+      "defaultValue": "configured",
+      "allowedValues": [
+        "configured",
+        "notconfigured"
+      ],
+      "metadata": {
+        "description": "Based on this value a different nested template is deployed"
+      }
+    },
+    "assetLocation": {
+      "type": "string",
+      "defaultValue": "https://raw.githubusercontent.com/marcvaneijk/arm/master/200-nested/200-template/"
+    }
+  },
+  "variables": {
+    "singleVariable": "singleVariable",
+    "objectVariable": {
+      "variable1": "value1",
+      "variable2": "value2"
+    },
+    "template": {
+      "shared": "shared.json",
+      "optional": "[concat('optional_', parameters('optionalResource'),'.json')]"
+    }
+  },
+  "resources": [
+    {
+      "name": "[variables('template').shared]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(concat(parameters('assetLocation'), 'nested/'), variables('template').shared)]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "objectVariable": {
+            "value": "[variables('objectVariable')]"
+          }
+        }
+      }
+    },
+    {
+      "name": "[variables('template').optional]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "[concat('Microsoft.Resources/deployments/', variables('template').shared)]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[uri(concat(parameters('assetLocation'), 'nested/'), variables('template').optional)]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "singleParam": {
+            "value": "[parameters('singleParam')]"
+          },
+          "singleVariable": {
+            "value": "[variables('singleVariable')]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
