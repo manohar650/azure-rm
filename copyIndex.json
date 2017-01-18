@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+    },
+  "variables": {
+    "name1": "[concat(uniqueString(resourceGroup().id),'name1')]",
+    "name2": "[concat(uniqueString(resourceGroup().id),'name2')]"
+  },
+  "resources": [
+    {
+      "name": "[concat(variables('name1'),copyIndex())]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "copy": {
+        "count": 2,
+        "name": "copy1"
+      },
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    },
+    {
+      "name": "[concat(variables('name2'),copyIndex())]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2015-06-15",
+      "location": "[resourceGroup().location]",
+      "copy": {
+        "count": 2,
+        "name": "copy2"
+      },
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
+    }
+  ],
+    "outputs": {
+    }
+}
